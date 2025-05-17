@@ -2,29 +2,33 @@ import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
-export const ThemeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+export const ThemeToggle = ({ setIsDarkMode }) => {
+  const [internalDark, setInternalDark] = useState(false);
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme === "dark") {
-      setIsDarkMode(true);
+      setInternalDark(true);
       document.documentElement.classList.add("dark");
+      setIsDarkMode(true);
     } else {
       localStorage.setItem("theme", "light");
+      setInternalDark(false);
       setIsDarkMode(false);
     }
-  }, []);
+  }, [setIsDarkMode]);
 
   const toggleTheme = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-      setIsDarkMode(false);
-    } else {
+    const newTheme = !internalDark;
+    setInternalDark(newTheme);
+    setIsDarkMode(newTheme);
+
+    if (newTheme) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
-      setIsDarkMode(true);
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
   };
 
@@ -35,12 +39,12 @@ export const ThemeToggle = () => {
         "fixed max-sm:hidden top-5 right-5 z-50 p-3 rounded-full",
         "transition-all duration-500 ease-in-out",
         "backdrop-blur-sm shadow-md",
-        isDarkMode
+        internalDark
           ? "bg-yellow-200/20 hover:bg-yellow-200/30 ring-2 ring-yellow-300"
           : "bg-blue-200/20 hover:bg-blue-200/30 ring-2 ring-blue-500"
       )}
     >
-      {isDarkMode ? (
+      {internalDark ? (
         <Sun
           className="h-6 w-6 text-yellow-400 drop-shadow-glow transition-transform duration-300 hover:rotate-12"
           strokeWidth={2}
