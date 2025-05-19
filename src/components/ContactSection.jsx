@@ -75,7 +75,7 @@ export const ContactSection = () => {
                 <SocialLink href="https://www.linkedin.com/in/ryan-amasora-3763aa343" icon={<Linkedin />} />
                 <SocialLink href="https://www.instagram.com/itzmi.rai" icon={<Instagram />} />
                 <SocialLink href="https://www.facebook.com/ryan.amasora.7" icon={<FaFacebook size={24} />} />
-                <SocialLink href="#" icon={<FaTelegram size={24} />} />
+                <SocialLink href="t.me/itzrrai" icon={<FaTelegram size={24} />} />
               </div>
             </div>
           </div>
