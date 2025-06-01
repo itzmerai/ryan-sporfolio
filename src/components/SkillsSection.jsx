@@ -12,6 +12,9 @@ import {
   FaFigma,
   FaGithub,
   FaServer,
+  FaPaintBrush,
+  FaGoogleDrive,
+  FaFileWord
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -45,6 +48,9 @@ const skills = [
   { name: "Docker", level: 70, category: "tools", icon: <FaDocker /> },
   { name: "Figma", level: 85, category: "tools", icon: <FaFigma /> },
   { name: "VS Code", level: 95, category: "tools", icon: <SiVscodium /> },
+  { name: "Canva", level: 90, category: "tools", icon: <FaPaintBrush /> },
+  { name: "Google Workspace", level: 80, category: "tools", icon: <FaGoogleDrive /> },
+  { name: "Microsoft Office", level: 85, category: "tools", icon: <FaFileWord /> },
 ];
 
 
